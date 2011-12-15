@@ -1,0 +1,6 @@
+note: Official RoadMap File. When done with an item, add --DONE to the end of it.
+
+1. Get Blank Plugin associated with .dcr --DONE
+2. Get GTK in NPAPI to draw "Hello World"
+3. Open .dcr file and get media
+4. Find way of getting script from .dcr
