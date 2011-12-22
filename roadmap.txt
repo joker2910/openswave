@@ -1,6 +1,10 @@
 note: Official RoadMap File. When done with an item, add --DONE to the end of it.
 
 1. Get Blank Plugin associated with .dcr --DONE
-2. Get GTK in NPAPI to draw "Hello World"
+2. Get GTK in NPAPI to draw --DONE
 3. Open .dcr file and get media
 4. Find way of getting script from .dcr
+5. Link with GDK to draw onto screen
+6. Link with gstreamer to play audio
+
+Plans on finding out how to open .dcr: Download IDA Pro Free in WINE, and decompile Adobe Shockwave 11.

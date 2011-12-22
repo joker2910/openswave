@@ -1,0 +1,6 @@
+Some things we should try to keep in mind:
+
+1. Compile with GTK2 and GTK3 (We don't want to leave GTK3 browsers out to have to use a wrapper)
+2. 32 BIT and 64 BIT Compatibility (Try to get the most performance, but don't leave 32 bit out)
+3. Portability (Try to work not just on Linux, but BSD and Solaris)
+4. Size (Try to keep the size to a minimum by using libraries that already exist in Linux)
