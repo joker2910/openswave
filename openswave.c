@@ -53,8 +53,18 @@
 static NPNetscapeFuncs* sBrowserFuncs = NULL;
 
 typedef struct InstanceData {
+  guint16 mode;
   NPP npp;
   NPWindow window;
+  guint32 x, y;
+  guint32 width, height;
+
+  NPP instance;
+
+  GtkWidget *container;
+  GtkWidget *canvas;
+
+  gboolean windowless;
 } InstanceData;
 
 static void
@@ -72,6 +82,13 @@ drawWindow(InstanceData* instanceData, GdkDrawable* gdkWindow)
 
   GdkGC* gdkContext = gdk_gc_new(gdkWindow);
 
+  GdkColor col;
+  col.red = 0;
+  col.blue = 65535;
+  col.green = 65535;
+  gdk_gc_set_rgb_fg_color(gdkContext, &col);
+  gdk_draw_rectangle(gdkWindow, gdkContext, TRUE, x, y, width, height);
+
   PangoContext* pangoContext = gdk_pango_context_get();
   PangoLayout* pangoTextLayout = pango_layout_new(pangoContext);
   pango_layout_set_width(pangoTextLayout, (width - 10) * PANGO_SCALE);
@@ -86,6 +103,8 @@ NP_EXPORT(NPError)
 NP_Initialize(NPNetscapeFuncs* bFuncs, NPPluginFuncs* pFuncs)
 {
   sBrowserFuncs = bFuncs;
+
+  NPError err = NPERR_NO_ERROR;
 
   // Check the size of the provided structure based on the offset of the
   // last member we need.
@@ -106,7 +125,7 @@ NP_Initialize(NPNetscapeFuncs* bFuncs, NPPluginFuncs* pFuncs)
   pFuncs->getvalue = NPP_GetValue;
   pFuncs->setvalue = NPP_SetValue;
 
-  return NPERR_NO_ERROR;
+  return err;
 }
 
 NP_EXPORT(char*)
